@@ -26,8 +26,7 @@ Before diving into HPC with SLURM, ensure you have the following:
 + scancel: Cancel a job.
 + srun: Run a command in parallel on allocated nodes.
 
-## More Details
-Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for more details and advanced functions.
+Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for advanced functions.
 
 # Best Practice
 + For large-scale simulations, it is suggested to make each job within a job array run for at least a few minutes. This helps ensure efficient utilization of resources.
