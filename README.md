@@ -20,11 +20,11 @@ Before diving into HPC with SLURM, ensure you have the following:
 ## Modify Your Scripts
 
 ## Common SLURM Commands
-+sinfo: Display information about available nodes and partitions.
-+sbatch: Submit a batch job script to the scheduler.
-+squeue: View the list of jobs currently in the queue.
-+scancel: Cancel a job.
-+srun: Run a command in parallel on allocated nodes.
++ sinfo: Display information about available nodes and partitions.
++ sbatch: Submit a batch job script to the scheduler.
++ squeue: View the list of jobs currently in the queue.
++ scancel: Cancel a job.
++ srun: Run a command in parallel on allocated nodes.
 
 ## More Details
 Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for more details and advanced functions.
