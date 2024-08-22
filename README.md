@@ -54,6 +54,14 @@ module load R/3.6.0
 R CMD BATCH R_code.R
 ```
 
+Run a job array
+```
+#!/bin/bash
+#SBATCH --output=slurm.out
+#SBATCH --array=1-100 # Run MATLAB_code 100 times in parallel
+#SBATCH --mem=100
+/opt/apps/MATLAB/R2012b/bin/matlab -nojvm-nodisplay–singleCompThread-r “rank=$SLURM_ARRAY_TASK_ID;MATLAB_code;quit”
+```
 ## Modify Your Scripts
 
 ## Common SLURM Commands
