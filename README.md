@@ -26,13 +26,33 @@ Windows users need to install an SSH client ([a free one](https://www.chiark.gre
 
 ## SLURM Scripts
 Write the SLURM scripts in a .q or .sh file
-'''
+
+MATLAB
+```
 #!/bin/bash
 #SBATCH --output=slurm.out # Give the output file name
 #SBATCH --error=slurm.err # Give the error file name
 #SBATCH --mem=100 # Set the required memory per node as 100MB
 /opt/apps/MATLAB/R2012b/bin/matlab -nojvm -nodisplay -r MATLAB_code # Run MATLAB_code with R20212b MATLAB
-'''
+```
+
+Python
+```
+#!/bin/bash
+#SBATCH -o slurm.out
+#SBATCH --mem=100
+module load Python-GPU/3.6.5
+python python_code.py
+```
+
+R
+```
+#!/bin/bash
+#SBATCH -o slurm.out
+#SBATCH --mem=100
+module load R/3.6.0
+R CMD BATCH R_code.R
+```
 
 ## Modify Your Scripts
 
