@@ -22,6 +22,13 @@ Windows users need to install an SSH client ([a free one](https://www.chiark.gre
 
 # Cluster Architecture
 
+There are usually different types of compute nodes:
+```
+common - Core CPU nodes
+scavenger - Nodes owned by other groups, you have “low priority” such that the your jobs maybe requeued or killed if the owners start their job
+gpu-common - Core GPU nodes
+scavenger-gpu - GPU nodes owned by other groups, you have “low priority” such that the your jobs maybe requeued or killed if the owners start their job
+```
 # SLURM 
 
 ## SLURM Scripts
@@ -62,7 +69,34 @@ Run a job array
 #SBATCH --mem=100
 /opt/apps/MATLAB/R2012b/bin/matlab -nojvm-nodisplay–singleCompThread-r “rank=$SLURM_ARRAY_TASK_ID;MATLAB_code;quit”
 ```
-## Modify Your Scripts
+## Adapt Your Scripts
+In many cases, it is useful to read in the taskID from the environment. To do so, add the following to the beginning of your code:
+
+MATLAB
+```
+taskID = str2num(getenv('SLURM_ARRAY_TASK_ID'));
+```
+Python
+```
+import os
+taskID=int(os.environ['SLURM_ARRAY_TASK_ID'])
+```
+R
+```
+taskID <- as.integer(Sys.getenv(SLURM_ARRAY_TASK_ID)) 
+```
+
+The task ID to run the same code with different parameters. For instance, for parameter screening, taskID can be used to read in the parameters from a pre-defined list. 
+```
+parameter_list = [1,2,3]
+parameter = parameter_list[taskID-1]
+```
+You can also use it to save the outputs from different jobs:
+```
+filename = path + str(taskID) + ‘.txt’
+with open(filename,’w’) as f:
+f.write(my_results)
+```
 
 ## Common SLURM Commands
 + sinfo: Display information about available nodes and partitions.
@@ -70,8 +104,22 @@ Run a job array
 + squeue: View the list of jobs currently in the queue.
 + scancel: Cancel a job.
 + srun: Run a command in parallel on allocated nodes.
-
 Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for advanced functions.
+
+To submit a job, upload all the code and the SLURM script into a folder. Open Terminal, and go to the directory containing your code, type in:
+```
+sbatch [slurm_script_file]
+```
+To view the status of the running jobs under your account
+```
+squeue -u [UserID]
+```
+To cancel a job,
+```
+scancel [JobID]
+```
+It is always useful to use .err and .out files, thus if you wonder the progress of your job or need to debug, simply check these files. 
+
 
 # Best Practice
 + For large-scale simulations, it is suggested to make each job within a job array run for at least a few minutes. This helps ensure efficient utilization of resources.
