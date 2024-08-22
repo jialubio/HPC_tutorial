@@ -5,6 +5,8 @@ This tutorial provides an introduction and guide to high-performance computing (
 # Introduction
 High-performance computing (HPC) allows you to perform large-scale computations by distributing tasks across multiple computing nodes. This repository will guide you through the process of using SLURM, a powerful and flexible workload manager, to efficiently manage and execute jobs on a compute cluster.
 
+Universities and research groups often have their own compute cluster. There are also commercial options that are more flexible and scalable, such as AWS, GCP, XSEDE and etc. 
+
 # Do You Need a Compute Cluster?
 There are pros and cons with using a compute cluster. It is really useful if:
 + Your job requires a lot of computational resources (ex. too slow to run on a personal computer)
@@ -21,7 +23,6 @@ Mac users can simply use the Terminal that comes with MacOS
 Windows users need to install an SSH client ([a free one](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html ))
 
 # Cluster Architecture
-
 There are usually different types of compute nodes:
 ```
 common - Core CPU nodes
