@@ -29,9 +29,20 @@ scavenger - Nodes owned by other groups, you have “low priority” such that t
 gpu-common - Core GPU nodes
 scavenger-gpu - GPU nodes owned by other groups, you have “low priority” such that the your jobs maybe requeued or killed if the owners start their job
 ```
-# SLURM 
+View all partitions and nodes on the cluster:
+```
+sinfo
+```
+
+Prioritize using the “common” nodes or nodes owned by your group. The partition is allocated through the SLURM script:
+```
+#SBATCH -p gpu-common --gres=gpu:1 # Use gpu-common, 1 GPU per node
+#SBATCH -c 4 # 4 CPUs per node
+```
 
 ## SLURM Scripts
+[SLURM](https://slurm.schedmd.com/documentation.html) is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters. It has three key functions. First, it allocates exclusive and/or non-exclusive access to resources (compute nodes) to users for some duration of time so they can perform work. Second, it provides a framework for starting, executing, and monitoring work (normally a parallel job) on the set of allocated nodes. Finally, it arbitrates contention for resources by managing a queue of pending work. 
+
 Write the SLURM scripts in a .q or .sh file
 
 MATLAB
@@ -124,4 +135,5 @@ It is always useful to use .err and .out files, thus if you wonder the progress 
 # Best Practice
 + For large-scale simulations, it is suggested to make each job within a job array run for at least a few minutes. This helps ensure efficient utilization of resources.
 + When allocating resources, ensure you are using the appropriate number of compute cores and memory. Allocating more compute cores may allow for more parallel tasks, improving overall efficiency. Avoid over-requesting resources to prevent underutilization and longer queue times.
++ The cluster does not have unlimited space, it is important not explode the cluster storage as it is shared by many users. It is a good habbit to download data and back up frequency.
 
