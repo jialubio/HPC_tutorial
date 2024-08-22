@@ -32,6 +32,7 @@ Write the SLURM scripts in a .q or .sh file
 #SBATCH --error=slurm.err # Give the error file name
 #SBATCH --mem=100 # Set the required memory per node as 100MB
 /opt/apps/MATLAB/R2012b/bin/matlab -nojvm -nodisplay -r MATLAB_code # Run MATLAB_code with R20212b MATLAB
+'''
 
 ## Modify Your Scripts
 
