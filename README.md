@@ -9,26 +9,26 @@ Universities and research groups often have their own compute cluster. There are
 
 # Do You Need a Compute Cluster?
 There are pros and cons with using a compute cluster. It is really useful if:
-+ Your job requires a lot of computational resources (ex. too slow to run on a personal computer)
-+ You need to run many jobs in parallel
-Otherwise, consider run you job locally or on a single CPU/GPU.
++ Your job requires a lot of computational resources (e.g. too large/slow to run on a personal computer)
++ You need to run many jobs in parallel.
+  
+Otherwise, consider run your job locally or on a single CPU/GPU.
 
 # Prerequisites and Tools
-Before diving into HPC with SLURM, ensure you have the following:
 + Basic knowledge of Linux command line.
-+ Access to an HPC cluster with SLURM installed.
++ Access to an HPC cluster with SLURM installed(ask your admin to set up an account for you).
 + Familiarity with shell scripting (e.g., Bash).
 
-Mac users can simply use the Terminal that comes with MacOS
+Mac users can simply use the Terminal that comes with MacOS.
 Windows users need to install an SSH client ([a free one](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html ))
 
 # Cluster Architecture
 There are usually different types of compute nodes:
 ```
 common - Core CPU nodes
-scavenger - Nodes owned by other groups, you have “low priority” such that the your jobs maybe requeued or killed if the owners start their job
+scavenger - Nodes owned by other groups, you have “low priority”, the your jobs maybe requeued or killed if the owners start their job
 gpu-common - Core GPU nodes
-scavenger-gpu - GPU nodes owned by other groups, you have “low priority” such that the your jobs maybe requeued or killed if the owners start their job
+scavenger-gpu - GPU nodes owned by other groups, you have “low priority”, the your jobs maybe requeued or killed if the owners start their job
 ```
 View all partitions and nodes on the cluster:
 ```
