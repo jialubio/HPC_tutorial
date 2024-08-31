@@ -84,26 +84,26 @@ R CMD BATCH R_code.R
 ## Adapt Your Scripts
 In many cases, it is useful to read in the taskID from the environment. To do so, add the following to the beginning of your code:
 
-MATLAB
+**MATLAB**
 ```
 taskID = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 ```
-Python
+**Python**
 ```
 import os
 taskID=int(os.environ['SLURM_ARRAY_TASK_ID'])
 ```
-R
+**R**
 ```
 taskID <- as.integer(Sys.getenv(SLURM_ARRAY_TASK_ID)) 
 ```
-
-The task ID to run the same code with different parameters. For instance, for parameter screening, taskID can be used to read in the parameters from a pre-defined list. 
+There are many use cases of taskID. 
+For parameter screening, taskID can be used to read in the parameters from a pre-defined list. 
 ```
 parameter_list = [1,2,3]
 parameter = parameter_list[taskID-1]
 ```
-You can also use it to save the outputs from different jobs:
+It can also be used to save outputs from different jobs in different output files.
 ```
 filename = path + str(taskID) + ‘.txt’
 with open(filename,’w’) as f:
