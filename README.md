@@ -26,9 +26,9 @@ Windows users need to install an SSH client ([a free one](https://www.chiark.gre
 There are usually different types of compute nodes:
 ```
 common - Core CPU nodes
-scavenger - Nodes owned by other groups, you have “low priority”, the your jobs maybe requeued or killed if the owners start their job
+scavenger - Nodes owned by other groups, you have “low priority”, your jobs maybe requeued or killed if the owners start their job
 gpu-common - Core GPU nodes
-scavenger-gpu - GPU nodes owned by other groups, you have “low priority”, the your jobs maybe requeued or killed if the owners start their job
+scavenger-gpu - GPU nodes owned by other groups, you have “low priority”, your jobs maybe requeued or killed if the owners start their job
 ```
 View all partitions and nodes on the cluster:
 ```
