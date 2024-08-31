@@ -46,7 +46,7 @@ Prioritize using the “common” nodes or nodes owned by your group. The partit
 
 Write the SLURM scripts in a .q or .sh file
 
-MATLAB
+**MATLAB**
 ```
 #!/bin/bash
 #SBATCH --output=slurm.out # Give the output file name
@@ -55,7 +55,7 @@ MATLAB
 /opt/apps/MATLAB/R2012b/bin/matlab -nojvm -nodisplay -r MATLAB_code # Run MATLAB_code with R20212b MATLAB
 ```
 
-Python
+**Python**
 ```
 #!/bin/bash
 #SBATCH -o slurm.out
@@ -64,7 +64,7 @@ module load Python-GPU/3.6.5
 python python_code.py
 ```
 
-R
+**R**
 ```
 #!/bin/bash
 #SBATCH -o slurm.out
@@ -73,7 +73,7 @@ module load R/3.6.0
 R CMD BATCH R_code.R
 ```
 
-Run a job array
+**Run a job array**
 ```
 #!/bin/bash
 #SBATCH --output=slurm.out
