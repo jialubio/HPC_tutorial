@@ -111,13 +111,6 @@ f.write(my_results)
 ```
 
 ## Common SLURM Commands
-+ sinfo: Display information about available nodes and partitions.
-+ sbatch: Submit a batch job script to the scheduler.
-+ squeue: View the list of jobs currently in the queue.
-+ scancel: Cancel a job.
-+ srun: Run a command in parallel on allocated nodes.
-Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for advanced functions.
-
 To submit a job, upload all the code and the SLURM script into a folder. Open Terminal, and go to the directory containing your code, type in:
 ```
 sbatch [slurm_script_file]
@@ -130,11 +123,18 @@ To cancel a job,
 ```
 scancel [JobID]
 ```
-It is always useful to use .err and .out files, thus if you wonder the progress of your job or need to debug, simply check these files. 
+It is always useful to use .err and .out files, thus when you wonder the progress of your job or need to debug, can simply check these files. 
 
+Other useful SLURM commands:
++ sinfo: Display information about available nodes and partitions.
++ sbatch: Submit a batch job script to the scheduler.
++ squeue: View the list of jobs currently in the queue.
++ scancel: Cancel a job.
++ srun: Run a command in parallel on allocated nodes.
+Check out SLURM [documentation](https://slurm.schedmd.com/documentation.html) for advanced functions.
 
 # Best Practice
 + For large-scale simulations, it is suggested to make each job within a job array run for at least a few minutes. This helps ensure efficient utilization of resources.
-+ When allocating resources, ensure you are using the appropriate number of compute cores and memory. Allocating more compute cores may allow for more parallel tasks, improving overall efficiency. Avoid over-requesting resources to prevent underutilization and longer queue times.
-+ The cluster does not have unlimited space, it is important not explode the cluster storage as it is shared by many users. It is a good habbit to download data and back up frequency.
++ When allocating resources, ensure you are using the appropriate number of compute cores and memory. Avoid over-requesting resources to prevent underutilization and longer queue times.
++ The cluster does not have unlimited space, it is important not to explode the cluster storage as it is shared by many users. It is a good habbit to download data and back up frequency.
 
